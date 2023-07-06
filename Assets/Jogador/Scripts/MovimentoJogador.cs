@@ -21,7 +21,10 @@ public class MovimentoJogador : MonoBehaviour
     {
         var xValor = Input.GetAxis("Horizontal") * FatorMovimentacao();
         var yValor = Input.GetAxis("Vertical") * FatorMovimentacao();
-        transform.Translate(xValor, yValor, transform.position.z, Space.World);
+        
+        var novaPosicao = new Vector3(xValor, yValor, transform.position.z);
+        
+        transform.Translate(novaPosicao, Space.World);
     }
 
     float FatorRotacao()
@@ -31,21 +34,40 @@ public class MovimentoJogador : MonoBehaviour
 
     void Rotacionar()
     {
+        if (Input.GetButton("Vertical"))
+            Inclinar();
+        else
+            VoltarInclinacao();
+    }
+
+    void Inclinar()
+    {
+        if (EstaNaInclinacaoMaxima())
+            return;
+
         var fatorRotacao = FatorRotacao();
 
-        if (Input.GetButton("Vertical"))
-        {
-            if (Input.GetAxis("Vertical") > 0 && transform.rotation.z < valorMaximoInclinacao)
-                transform.Rotate(Vector3.forward * fatorRotacao);
-            else if (Input.GetAxis("Vertical") < 0  && transform.rotation.z > -valorMaximoInclinacao)
-                transform.Rotate(Vector3.back * fatorRotacao);
-        }
-        else
-        {
-            if (transform.rotation.z > 0)
-                transform.Rotate(Vector3.back * fatorRotacao);
-            else if (transform.rotation.z < 0)
-                transform.Rotate(Vector3.forward * fatorRotacao);
-        }
+        if (Input.GetAxis("Vertical") > 0)
+            transform.Rotate(Vector3.forward * fatorRotacao);
+        else if (Input.GetAxis("Vertical") < 0)
+            transform.Rotate(Vector3.back * fatorRotacao);
+    }
+
+    bool EstaNaInclinacaoMaxima()
+    {
+        var rotacaoAtual = transform.rotation.z;
+        rotacaoAtual = rotacaoAtual >= 0 ? rotacaoAtual : -rotacaoAtual;
+
+        return rotacaoAtual >= valorMaximoInclinacao;
+    }
+
+    void VoltarInclinacao()
+    {
+        var fatorRotacao = FatorRotacao();
+
+        if (transform.rotation.z > 0)
+            transform.Rotate(Vector3.back * fatorRotacao);
+        else if (transform.rotation.z < 0)
+            transform.Rotate(Vector3.forward * fatorRotacao);
     }
 }

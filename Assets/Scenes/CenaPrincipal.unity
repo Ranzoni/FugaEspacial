@@ -404,8 +404,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meteoroPrefab: {fileID: 5896908766416553900, guid: dc3eca91f7a1756458085d9f548db7b2, type: 3}
-  tempoMinimoGeracao: 0.5
-  tempoMaximoGeracao: 1.5
+  tempoMinimoGeracao: 2
+  tempoMaximoGeracao: 4
   alturaMinima: -10
   alturaMaxima: 10
 --- !u!4 &990602378

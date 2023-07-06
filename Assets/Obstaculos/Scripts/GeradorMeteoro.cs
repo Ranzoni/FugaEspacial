@@ -22,6 +22,8 @@ public class GeradorMeteoro : MonoBehaviour
             var yValor = Random.Range(alturaMinima, alturaMaxima);
             var meteoroPosicao = new Vector3(transform.position.x, yValor, transform.position.z);
             var meteoroNovo = Instantiate(meteoroPrefab, meteoroPosicao, Quaternion.identity);
+
+            meteoroNovo.transform.parent = transform;
             
             yield return new WaitForSeconds(tempoEspera);
         }

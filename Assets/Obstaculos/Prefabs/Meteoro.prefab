@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1067352544307687716}
   - component: {fileID: -1087343173949659970}
+  - component: {fileID: 416276716639733972}
   m_Layer: 0
   m_Name: Meteoro
   m_TagString: Untagged
@@ -46,6 +47,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidade: 3
+--- !u!114 &416276716639733972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5896908766416553900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c87eca1fd70a9104c8337a725b040e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6169785340742577831
 GameObject:
   m_ObjectHideFlags: 0
