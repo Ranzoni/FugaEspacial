@@ -34,7 +34,7 @@ public class MovimentoJogador : MonoBehaviour
 
     void Rotacionar()
     {
-        if (Input.GetButton("Vertical"))
+        if (Input.GetAxis("Vertical") != 0)
             Inclinar();
         else
             VoltarInclinacao();
