@@ -521,8 +521,12 @@ PrefabInstance:
       value: Nave
       objectReference: {fileID: 0}
     - target: {fileID: 5682931611075654213, guid: 9637bc9ea991fc5439f721dce8ea8b58, type: 3}
+      propertyPath: velocidadeRotacao
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682931611075654213, guid: 9637bc9ea991fc5439f721dce8ea8b58, type: 3}
       propertyPath: velocidadeMovimento
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1534,11 +1538,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6198fd0c7524e4d8ebae1dd532c7de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meteoroPrefab: {fileID: 5896908766416553900, guid: dc3eca91f7a1756458085d9f548db7b2, type: 3}
-  tempoMinimoGeracao: 2
-  tempoMaximoGeracao: 4
-  alturaMinima: -10
-  alturaMaxima: 10
+  listaMeteoroPrefab:
+  - {fileID: 5896908766416553900, guid: dc3eca91f7a1756458085d9f548db7b2, type: 3}
+  - {fileID: 5896908766416553900, guid: 20c3736cbf567314a989201c76fb0b17, type: 3}
+  - {fileID: 5896908766416553900, guid: ba3c4c18128cad94abc0d42b4470da09, type: 3}
+  - {fileID: 5896908766416553900, guid: 392119da0ed154f45960ca5451ef376f, type: 3}
+  tempoMinimoGeracao: 0.5
+  tempoMaximoGeracao: 1
+  alturaMinima: -12
+  alturaMaxima: 12
 --- !u!4 &990602378
 Transform:
   m_ObjectHideFlags: 0
