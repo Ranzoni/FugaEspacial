@@ -10,16 +10,4 @@ public class Menu : MonoBehaviour
         sessao = FindObjectOfType<ControladorSessao>();
         sessao.PararJogo();
     }
-
-    void Start()
-    {
-        menuCanvas = GetComponent<Canvas>();
-    }
-
-    public void Iniciar()
-    {
-        menuCanvas.enabled = false;
-
-        sessao.ContinuarJogo();
-    }
 }

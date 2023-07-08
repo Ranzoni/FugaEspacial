@@ -3,10 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class ControladorSessao : MonoBehaviour
 {
-    public void RecarregarCena()
+    readonly int cenaPrincipal = 1;
+
+    public void IniciarJogo()
     {
         ContinuarJogo();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(cenaPrincipal);
     }
 
     public void ContinuarJogo()
