@@ -484,11 +484,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5682931611075654213, guid: 9637bc9ea991fc5439f721dce8ea8b58, type: 3}
       propertyPath: velocidadeRotacao
-      value: 120
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5682931611075654213, guid: 9637bc9ea991fc5439f721dce8ea8b58, type: 3}
       propertyPath: velocidadeMovimento
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682931611075654213, guid: 9637bc9ea991fc5439f721dce8ea8b58, type: 3}
+      propertyPath: valorMaximoInclinacao
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8748045214162574501, guid: 9637bc9ea991fc5439f721dce8ea8b58, type: 3}
       propertyPath: impulso
