@@ -5,6 +5,7 @@ public class MovimentoJogador : MonoBehaviour
     [SerializeField] float velocidadeMovimento = 2f;
     [SerializeField] float velocidadeRotacao = 80f;
     [SerializeField] float valorMaximoInclinacao = 0.5f;
+    [SerializeField] float velocidadeImpulso = 2f;
 
     void Update()
     {
@@ -12,9 +13,22 @@ public class MovimentoJogador : MonoBehaviour
         Rotacionar();
     }
 
-    float FatorMovimentacao()
+    float VelocidadePadrao()
     {
         return velocidadeMovimento * Time.deltaTime;
+    }
+
+    float VelocidadeComImpulso()
+    {
+        return (velocidadeImpulso + velocidadeMovimento) * Time.deltaTime;
+    }
+    
+    float FatorMovimentacao()
+    {
+        if (Input.GetButton("Jump"))
+            return VelocidadeComImpulso();
+
+        return VelocidadePadrao();
     }
 
     void Movimentar()
