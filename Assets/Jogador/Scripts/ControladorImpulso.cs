@@ -6,9 +6,16 @@ public class ControladorImpulso : MonoBehaviour
     [SerializeField] float impulso = 2f;
     [SerializeField] float quantidade = 100f;
     [SerializeField] float gastoComUso = 10f;
+    [SerializeField] float tempoDeGasto = .5f;
 
     bool estaUsando;
-    
+    float quantidadeMaxima;
+
+    void Start()
+    {
+        quantidadeMaxima = quantidade;
+    }
+
     void Update()
     {
         if (Input.GetButtonUp("Jump"))
@@ -25,7 +32,7 @@ public class ControladorImpulso : MonoBehaviour
     {
         while (estaUsando && quantidade > 0)
         {
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(tempoDeGasto);
         
             quantidade -= gastoComUso;
         }
@@ -37,5 +44,15 @@ public class ControladorImpulso : MonoBehaviour
             return 0;
 
         return impulso;
+    }
+
+    public float Quantidade()
+    {
+        return quantidade;
+    }
+
+    public float QuantidadeMaxima()
+    {
+        return quantidadeMaxima;
     }
 }
