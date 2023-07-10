@@ -9,6 +9,8 @@ public class GeradorMeteoro : MonoBehaviour
     [SerializeField] float alturaMinima = -5f;
     [SerializeField] float alturaMaxima = 5f;
 
+    bool fabricarMeteoros = true;
+
     void Start()
     {
         StartCoroutine(GerarMeteoro());
@@ -18,6 +20,9 @@ public class GeradorMeteoro : MonoBehaviour
     {
         while (true)
         {
+            if (!fabricarMeteoros)
+                break;
+
             var tempoEspera = Random.Range(tempoMinimoGeracao, tempoMaximoGeracao);
             var yValor = Random.Range(alturaMinima, alturaMaxima);
             var novaPosicao = new Vector3(transform.position.x, yValor, transform.position.z);
@@ -35,5 +40,10 @@ public class GeradorMeteoro : MonoBehaviour
     {
         var index = Random.Range(0, listaPrefab.Length);
         return listaPrefab[index];
+    }
+
+    public void Parar()
+    {
+        fabricarMeteoros = false;
     }
 }

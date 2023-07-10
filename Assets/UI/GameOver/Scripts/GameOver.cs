@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameOver : MonoBehaviour
@@ -16,6 +17,20 @@ public class GameOver : MonoBehaviour
 
     public void Apresentar()
     {
+        StartCoroutine(Executar());
+    }
+
+    IEnumerator Executar()
+    {
+        var geradorMeteoro = FindObjectOfType<GeradorMeteoro>();
+        geradorMeteoro.Parar();
+
+        var meteoros = FindObjectsOfType<MovimentoMeteoro>();
+        foreach (var meteoro in meteoros)
+            meteoro.Parar();
+
+        yield return new WaitForSeconds(1f);
+
         gameOverCanvas.enabled = true;
         sessao.PararJogo();
         somGameOver.Play();

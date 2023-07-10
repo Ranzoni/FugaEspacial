@@ -21,4 +21,9 @@ public class MovimentoMeteoro : MonoBehaviour
     {
         return -velocidade * Time.deltaTime * dificuldadeJogo.FatorBalanceamento();
     }
+
+    public void Parar()
+    {
+        velocidade = 0;
+    }
 }
