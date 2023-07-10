@@ -10,6 +10,7 @@ public class Colisao : MonoBehaviour
         if (other.tag != "Obstaculo")
             return;
 
+        Destroy(other.gameObject);
         ProcessarDestruicao();
         ExecutarGameOver();
     }
