@@ -73,10 +73,11 @@ public class MovimentoJogador : MonoBehaviour
     void VoltarInclinacao()
     {
         var fatorRotacao = FatorRotacao();
+        var rotationZ = Mathf.Round(transform.rotation.z * 100f) / 100f;
 
-        if (transform.rotation.z > 0)
+        if (rotationZ > 0)
             transform.Rotate(Vector3.back * fatorRotacao);
-        else if (transform.rotation.z < 0)
+        else if (rotationZ < 0)
             transform.Rotate(Vector3.forward * fatorRotacao);
     }
 }
