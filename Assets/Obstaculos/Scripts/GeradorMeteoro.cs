@@ -6,13 +6,17 @@ public class GeradorMeteoro : MonoBehaviour
     [SerializeField] GameObject[] listaPrefab;
     [SerializeField] float tempoMinimoGeracao = .5f;
     [SerializeField] float tempoMaximoGeracao = 1.5f;
+    [SerializeField] float menorTempoPossivel = .001f;
     [SerializeField] float alturaMinima = -5f;
     [SerializeField] float alturaMaxima = 5f;
 
     bool fabricarMeteoros = true;
+    DificuldadeJogo dificuldadeJogo;
 
     void Start()
     {
+        dificuldadeJogo = FindObjectOfType<DificuldadeJogo>();
+
         StartCoroutine(GerarMeteoro());
     }
 
@@ -23,7 +27,7 @@ public class GeradorMeteoro : MonoBehaviour
             if (!fabricarMeteoros)
                 break;
 
-            var tempoEspera = Random.Range(tempoMinimoGeracao, tempoMaximoGeracao);
+            var tempoEspera = TempoEspera();
             var yValor = Random.Range(alturaMinima, alturaMaxima);
             var novaPosicao = new Vector3(transform.position.x, yValor, transform.position.z);
 
@@ -34,6 +38,20 @@ public class GeradorMeteoro : MonoBehaviour
             
             yield return new WaitForSeconds(tempoEspera);
         }
+    }
+
+    float TempoEspera()
+    {
+        var tempoMinimoBalanceado = tempoMinimoGeracao / dificuldadeJogo.FatorBalanceamento();
+        if (tempoMinimoBalanceado <= 0)
+            tempoMinimoBalanceado = menorTempoPossivel;
+
+        var tempoMaximoBalanceado = tempoMaximoGeracao / dificuldadeJogo.FatorBalanceamento();
+        if (tempoMaximoBalanceado <= tempoMinimoBalanceado)
+            return tempoMinimoGeracao + menorTempoPossivel;
+
+        var tempoEspera = Random.Range(tempoMinimoBalanceado, tempoMaximoGeracao);
+        return tempoEspera;
     }
 
     GameObject RetornarPrefabAleatorio()

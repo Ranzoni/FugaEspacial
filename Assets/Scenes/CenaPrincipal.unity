@@ -222,6 +222,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4621233244939490860, guid: 191e7d0776ccc3e42a7b23b799cd1940, type: 3}
+      propertyPath: m_Volume
+      value: 0.354
+      objectReference: {fileID: 0}
     - target: {fileID: 6872579500723131885, guid: 191e7d0776ccc3e42a7b23b799cd1940, type: 3}
       propertyPath: m_Name
       value: Game Over Canvas
@@ -830,6 +834,7 @@ MonoBehaviour:
   - {fileID: 5896908766416553900, guid: 392119da0ed154f45960ca5451ef376f, type: 3}
   tempoMinimoGeracao: 0.5
   tempoMaximoGeracao: 1
+  menorTempoPossivel: 0.001
   alturaMinima: -12
   alturaMaxima: 12
 --- !u!4 &990602378
@@ -881,7 +886,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 347217c5a0da6654eb3b2070d5a62add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intervaloParaDificuldade: 10
 --- !u!4 &1586482871
 Transform:
   m_ObjectHideFlags: 0
@@ -1108,6 +1112,10 @@ PrefabInstance:
       propertyPath: controladorImpulso
       value: 
       objectReference: {fileID: 394028910}
+    - target: {fileID: 6149555116384336385, guid: 65e07b4296401f34997670149c1245cb, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 6149555116384336386, guid: 65e07b4296401f34997670149c1245cb, type: 3}
       propertyPath: m_Pivot.x
       value: 0

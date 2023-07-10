@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class DificuldadeJogo : MonoBehaviour
 {
-    [SerializeField] int intervaloParaDificuldade = 10;
     float balanceador = 1f;
 
     void Start()

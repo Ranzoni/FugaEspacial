@@ -8,7 +8,7 @@ public class ControladorImpulso : MonoBehaviour
     [SerializeField] float gastoComUso = 10f;
     [SerializeField] float tempoDeGasto = .5f;
 
-    bool estaUsando;
+    bool emUso;
     float quantidadeMaxima;
 
     void Start()
@@ -19,18 +19,18 @@ public class ControladorImpulso : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonUp("Jump"))
-            estaUsando = false;
+            emUso = false;
 
-        if (!Input.GetButton("Jump") || estaUsando)
+        if (!Input.GetButton("Jump") || emUso)
             return;
 
-        estaUsando = true;
+        emUso = true;
         StartCoroutine(ReduzirQuantidade());
     }
 
     IEnumerator ReduzirQuantidade()
     {
-        while (estaUsando && quantidade > 0)
+        while (emUso && quantidade > 0)
         {
             yield return new WaitForSeconds(tempoDeGasto);
         
