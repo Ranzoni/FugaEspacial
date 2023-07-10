@@ -4,7 +4,6 @@ public class GameOver : MonoBehaviour
 {
     Canvas gameOverCanvas;
     ControladorSessao sessao;
-    bool ehGameOver;
     AudioSource somGameOver;
 
     void Start()
@@ -18,13 +17,12 @@ public class GameOver : MonoBehaviour
     public void Apresentar()
     {
         gameOverCanvas.enabled = true;
-        ehGameOver = true;
         sessao.PararJogo();
         somGameOver.Play();
     }
 
     public bool EhGameOver()
     {
-        return ehGameOver;
+        return gameOverCanvas.enabled;
     }
 }

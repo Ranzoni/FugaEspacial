@@ -38,4 +38,9 @@ public class Pause : MonoBehaviour
 
         sessao.ContinuarJogo();
     }
+
+    public bool EstaPausado()
+    {
+        return pauseCanvas.enabled;
+    }
 }
