@@ -566,6 +566,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nave
       objectReference: {fileID: 0}
+    - target: {fileID: 5529309384776682130, guid: 9637bc9ea991fc5439f721dce8ea8b58, type: 3}
+      propertyPath: powerUpSFX
+      value: 
+      objectReference: {fileID: 532915052983855231, guid: 3cf5f3d526940b742b5e374fc39e4d22, type: 3}
     - target: {fileID: 5682931611075654213, guid: 9637bc9ea991fc5439f721dce8ea8b58, type: 3}
       propertyPath: impulso
       value: 5
