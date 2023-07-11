@@ -5,12 +5,31 @@ public class Colisao : MonoBehaviour
     [SerializeField] GameObject explosaoSFX;
     [SerializeField] GameObject explosaoVFX;
 
+    ControladorImpulso controladorImpulso;
+
+    void Start()
+    {
+        controladorImpulso = GetComponent<ControladorImpulso>();
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "Obstaculo")
-            return;
+        if (other.CompareTag("Obstaculo"))
+            ProcessarColisaoObstaculo(other.gameObject);
 
-        Destroy(other.gameObject);
+        if (other.CompareTag("Item"))
+            ProcessarColisaoItem(other.gameObject);
+    }
+
+    void ProcessarColisaoItem(GameObject objetoColidiu)
+    {
+        Destroy(objetoColidiu);
+        controladorImpulso.RecuperarImpulso();
+    }
+
+    void ProcessarColisaoObstaculo(GameObject objetoColidiu)
+    {
+        Destroy(objetoColidiu);
         ProcessarDestruicao();
         ExecutarGameOver();
     }

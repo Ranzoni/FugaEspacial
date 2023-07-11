@@ -7,6 +7,7 @@ public class ControladorImpulso : MonoBehaviour
     [SerializeField] float quantidade = 100f;
     [SerializeField] float gastoComUso = 10f;
     [SerializeField] float tempoDeGasto = .5f;
+    [SerializeField] float quantidadeParaRecuperar = 20f;
 
     bool emUso;
     float quantidadeMaxima;
@@ -26,6 +27,14 @@ public class ControladorImpulso : MonoBehaviour
 
         emUso = true;
         StartCoroutine(ReduzirQuantidade());
+    }
+
+    public void RecuperarImpulso()
+    {
+        quantidade += quantidadeParaRecuperar;
+
+        if (quantidade > quantidadeMaxima)
+            quantidade = quantidadeMaxima;
     }
 
     IEnumerator ReduzirQuantidade()
