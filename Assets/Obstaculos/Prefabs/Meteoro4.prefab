@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 416276716639733972}
   - component: {fileID: 8067582079709191457}
   - component: {fileID: 8809426331040447349}
+  - component: {fileID: 8593389014507714315}
+  - component: {fileID: 3114368338319800835}
   m_Layer: 0
   m_Name: Meteoro4
   m_TagString: Obstaculo
@@ -69,19 +71,11 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5896908766416553900}
   m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Radius: 1.36
-  m_Center: {x: -0.47, y: -0.54, z: 0}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.26
+  m_Center: {x: -0.47, y: -0.48, z: 0}
 --- !u!135 &8809426331040447349
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -90,25 +84,42 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5896908766416553900}
   m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.51
-  m_Center: {x: 0.15, y: 0.14, z: 0.15}
+  serializedVersion: 2
+  m_Radius: 1.24
+  m_Center: {x: 0.15, y: 0.22, z: 0.15}
+--- !u!135 &8593389014507714315
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5896908766416553900}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.99
+  m_Center: {x: 0.15, y: 0.73, z: 0.15}
+--- !u!135 &3114368338319800835
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5896908766416553900}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.17
+  m_Center: {x: -0.54, y: -0.65, z: 0.15}
 --- !u!1001 &502202738441150903
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 3
     m_TransformParent: {fileID: 1067352544307687716}
     m_Modifications:
     - target: {fileID: 130102, guid: 04d0bf4be9447154188d86f6e3b8dce9, type: 3}
@@ -161,9 +172,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11467940, guid: 04d0bf4be9447154188d86f6e3b8dce9, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04d0bf4be9447154188d86f6e3b8dce9, type: 3}
 --- !u!4 &502202738441210243 stripped
 Transform:
