@@ -6,6 +6,7 @@ public class GameOver : MonoBehaviour
     Canvas gameOverCanvas;
     ControladorSessao sessao;
     AudioSource somGameOver;
+    SelecionarBotaoInicial selecionarBotaoInicial;
 
     void Start()
     {
@@ -13,6 +14,7 @@ public class GameOver : MonoBehaviour
         gameOverCanvas = GetComponent<Canvas>();
         gameOverCanvas.enabled = false;
         somGameOver = GetComponent<AudioSource>();
+        selecionarBotaoInicial = FindObjectOfType<SelecionarBotaoInicial>();
     }
 
     public void Apresentar()
@@ -31,6 +33,7 @@ public class GameOver : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        selecionarBotaoInicial.AtivarBotaoGameOver();
         gameOverCanvas.enabled = true;
         sessao.PararJogo();
         somGameOver.Play();

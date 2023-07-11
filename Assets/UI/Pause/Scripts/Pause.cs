@@ -5,9 +5,11 @@ public class Pause : MonoBehaviour
     Canvas pauseCanvas;
     ControladorSessao sessao;
     GameOver gameOver;
+    SelecionarBotaoInicial selecionarBotaoInicial;
 
     void Start()
     {
+        selecionarBotaoInicial = FindObjectOfType<SelecionarBotaoInicial>();
         sessao = FindObjectOfType<ControladorSessao>();
         gameOver = FindObjectOfType<GameOver>();
         pauseCanvas = GetComponent<Canvas>();
@@ -27,6 +29,7 @@ public class Pause : MonoBehaviour
 
     void Pausar()
     {
+        selecionarBotaoInicial.AtivarBotaoPause();
         pauseCanvas.enabled = true;
 
         sessao.PararJogo();
