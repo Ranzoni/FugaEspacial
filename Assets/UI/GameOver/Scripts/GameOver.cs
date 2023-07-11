@@ -24,10 +24,10 @@ public class GameOver : MonoBehaviour
 
     IEnumerator Executar()
     {
-        var geradorMeteoro = FindObjectOfType<GeradorMeteoro>();
+        var geradorMeteoro = FindObjectOfType<GeradorObjeto>();
         geradorMeteoro.Parar();
 
-        var meteoros = FindObjectsOfType<MovimentoMeteoro>();
+        var meteoros = FindObjectsOfType<MovimentoObjeto>();
         foreach (var meteoro in meteoros)
             meteoro.Parar();
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.012747748, g: 0.041820988, b: 0.06142076, a: 1}
+  m_IndirectSpecularColor: {r: 0.017890142, g: 0.05700317, b: 0.079743184, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -916,7 +916,7 @@ GameObject:
   - component: {fileID: 990602378}
   - component: {fileID: 990602377}
   m_Layer: 0
-  m_Name: Obstaculos
+  m_Name: Objetos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -939,6 +939,7 @@ MonoBehaviour:
   - {fileID: 5896908766416553900, guid: 20c3736cbf567314a989201c76fb0b17, type: 3}
   - {fileID: 5896908766416553900, guid: ba3c4c18128cad94abc0d42b4470da09, type: 3}
   - {fileID: 5896908766416553900, guid: 392119da0ed154f45960ca5451ef376f, type: 3}
+  - {fileID: 3120019761702919215, guid: 723cb26bd97b62141b616fbd2c47ccd0, type: 3}
   tempoMinimoGeracao: 0.5
   tempoMaximoGeracao: 1
   menorTempoPossivel: 0.001

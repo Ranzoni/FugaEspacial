@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovimentoMeteoro : MonoBehaviour
+public class MovimentoObjeto : MonoBehaviour
 {
     [SerializeField] float velocidade = 3f;
 

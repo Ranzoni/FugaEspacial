@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class GeradorMeteoro : MonoBehaviour
+public class GeradorObjeto : MonoBehaviour
 {
     [SerializeField] GameObject[] listaPrefab;
     [SerializeField] float tempoMinimoGeracao = .5f;
@@ -9,22 +9,31 @@ public class GeradorMeteoro : MonoBehaviour
     [SerializeField] float menorTempoPossivel = .001f;
     [SerializeField] float alturaMinima = -5f;
     [SerializeField] float alturaMaxima = 5f;
+    [SerializeField] int intervaloPontuacao = 400;
 
-    bool fabricarMeteoros = true;
+    bool fabricar = true;
     DificuldadeJogo dificuldadeJogo;
+    Pontuacao pontuacao;
+    bool podeGerarItem;
 
     void Start()
     {
         dificuldadeJogo = FindObjectOfType<DificuldadeJogo>();
+        pontuacao = FindObjectOfType<Pontuacao>();
 
-        StartCoroutine(GerarMeteoro());
+        StartCoroutine(Gerar());
     }
 
-    IEnumerator GerarMeteoro()
+    void Update()
+    {
+        VerificarSePodeGerarItem();
+    }
+
+    IEnumerator Gerar()
     {
         while (true)
         {
-            if (!fabricarMeteoros)
+            if (!fabricar)
                 break;
 
             var tempoEspera = TempoEspera();
@@ -32,9 +41,9 @@ public class GeradorMeteoro : MonoBehaviour
             var novaPosicao = new Vector3(transform.position.x, yValor, transform.position.z);
 
             var prefab = RetornarPrefabAleatorio();
-            var novoObstaculo = Instantiate(prefab, novaPosicao, Quaternion.identity);
+            var novoObjeto = Instantiate(prefab, novaPosicao, Quaternion.identity);
 
-            novoObstaculo.transform.parent = transform;
+            novoObjeto.transform.parent = transform;
             
             yield return new WaitForSeconds(tempoEspera);
         }
@@ -56,12 +65,32 @@ public class GeradorMeteoro : MonoBehaviour
 
     GameObject RetornarPrefabAleatorio()
     {
-        var index = Random.Range(0, listaPrefab.Length);
-        return listaPrefab[index];
+        while (true)
+        {
+            var index = Random.Range(0, listaPrefab.Length);
+            if (listaPrefab[index].tag == "Item")
+            {
+                if (!podeGerarItem)
+                    continue;
+
+                podeGerarItem = false;
+            }
+
+            return listaPrefab[index];
+        };
+    }
+
+    void VerificarSePodeGerarItem()
+    {
+        var pontuacaoAtual = pontuacao.Pontos();
+        if (pontuacaoAtual == 0 || podeGerarItem)
+            return;
+
+        podeGerarItem = pontuacaoAtual % intervaloPontuacao == 0;
     }
 
     public void Parar()
     {
-        fabricarMeteoros = false;
+        fabricar = false;
     }
 }

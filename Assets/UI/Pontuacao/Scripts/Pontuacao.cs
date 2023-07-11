@@ -18,4 +18,9 @@ public class Pontuacao : MonoBehaviour
 
         textoPontuacao.text = pontos.ToString();
     }
+
+    public int Pontos()
+    {
+        return pontos;
+    }
 }
