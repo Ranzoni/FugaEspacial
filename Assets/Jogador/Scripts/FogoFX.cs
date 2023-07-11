@@ -7,9 +7,16 @@ public class FogoFX : MonoBehaviour
     [SerializeField] GameObject fogoImpulsoDireitoVFX;
     [SerializeField] GameObject fogoImpulsoEsquerdoVFX;
 
+    ControladorImpulso controladorImpulso;
+
+    void Start()
+    {
+        controladorImpulso = GetComponent<ControladorImpulso>();
+    }
+
     void Update()
     {
-        if (Input.GetButton("Jump"))
+        if (Input.GetButton("Jump") && controladorImpulso.Quantidade() > 0)
         {
             ConfigurarFogo(false, fogoPadraoDireitoVFX, fogoPadraoEsquerdoVFX);
             ConfigurarFogo(true, fogoImpulsoDireitoVFX, fogoImpulsoEsquerdoVFX);
