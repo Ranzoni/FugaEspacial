@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class RotacaoSkybox : MonoBehaviour
 {
+    [Tooltip("Velocidade de rotação do Skybox")]
     [SerializeField] float velocidadeRotacao = 10f;
 
     void Update()

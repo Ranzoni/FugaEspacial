@@ -3,7 +3,12 @@ using UnityEngine;
 
 public class DificuldadeJogo : MonoBehaviour
 {
-    float balanceador = 1f;
+    [Tooltip("Dificuldade inicial do jogo (Ela também define o tempo com que irá se modificar)")]
+    [SerializeField] float fatorDificuldade = 1f;
+    [Tooltip("Valor que será acrescentado na dificuldade do jogo")]
+    [SerializeField] float acrescimoDificuldade = .3f;
+
+    public float FatorDificuldade { get { return fatorDificuldade; } }
 
     void Start()
     {
@@ -14,14 +19,9 @@ public class DificuldadeJogo : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(balanceador);
+            yield return new WaitForSeconds(fatorDificuldade);
 
-            balanceador += .3f;
+            fatorDificuldade += .3f;
         }
-    }
-
-    public float FatorBalanceamento()
-    {
-        return balanceador;
     }
 }

@@ -57,11 +57,11 @@ public class GeradorObjeto : MonoBehaviour
 
     float TempoBalanceadoParaGeracao()
     {
-        var tempoMinimoBalanceado = tempoMinimoGeracao / dificuldadeJogo.FatorBalanceamento();
+        var tempoMinimoBalanceado = tempoMinimoGeracao / dificuldadeJogo.FatorDificuldade;
         if (tempoMinimoBalanceado <= 0)
             tempoMinimoBalanceado = menorTempoPossivel;
 
-        var tempoMaximoBalanceado = tempoMaximoGeracao / dificuldadeJogo.FatorBalanceamento();
+        var tempoMaximoBalanceado = tempoMaximoGeracao / dificuldadeJogo.FatorDificuldade;
         if (tempoMaximoBalanceado <= tempoMinimoBalanceado)
             return tempoMinimoGeracao + menorTempoPossivel;
 

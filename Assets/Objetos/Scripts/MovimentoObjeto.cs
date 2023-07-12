@@ -15,7 +15,7 @@ public class MovimentoObjeto : MonoBehaviour
 
     float FatorVelocidadeBalanceado()
     {
-        return -velocidade * Time.deltaTime * dificuldadeJogo.FatorBalanceamento();
+        return -velocidade * Time.deltaTime * dificuldadeJogo.FatorDificuldade;
     }
 
     public void Parar()
