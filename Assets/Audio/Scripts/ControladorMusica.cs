@@ -1,16 +1,18 @@
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class ControladorMusica : MonoBehaviour
 {
-    GameOver gameOver;
+    [Tooltip("Prefab com o script de Game Over do jogo")]
+    [SerializeField] GameOver gameOver;
+    [Tooltip("Prefab com o script de Pause do jogo")]
+    [SerializeField] Pause pause;
+    
     AudioSource musica;
-    Pause pause;
 
     void Start()
     {
-        gameOver = FindObjectOfType<GameOver>();
         musica = GetComponent<AudioSource>();
-        pause = FindObjectOfType<Pause>();
     }
 
     void Update()
@@ -18,7 +20,7 @@ public class ControladorMusica : MonoBehaviour
         if (gameOver.EhGameOver)
             musica.Stop();
 
-        if (pause.EstaPausado())
+        if (pause.EstaPausado)
             musica.Pause();
         else if (!musica.isPlaying)
             musica.Play();

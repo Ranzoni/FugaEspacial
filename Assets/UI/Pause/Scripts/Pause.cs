@@ -10,6 +10,8 @@ public class Pause : MonoBehaviour
     [Tooltip("Prefab com o script de Seleção do Botão Inicial")]
     [SerializeField] SelecionarBotaoInicial selecionarBotaoInicial;
 
+    public bool EstaPausado { get { return pauseCanvas.enabled; } }
+
     Canvas pauseCanvas;
 
     void Start()
@@ -23,7 +25,7 @@ public class Pause : MonoBehaviour
         if (!Input.GetButtonDown("Cancel") || gameOver.EhGameOver)
             return;
 
-        if (EstaPausado())
+        if (EstaPausado)
             Continuar();
         else
             Pausar();
@@ -42,10 +44,5 @@ public class Pause : MonoBehaviour
         pauseCanvas.enabled = false;
 
         sessao.ContinuarJogo();
-    }
-
-    public bool EstaPausado()
-    {
-        return pauseCanvas.enabled;
     }
 }

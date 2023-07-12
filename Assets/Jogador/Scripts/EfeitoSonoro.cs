@@ -46,7 +46,7 @@ public class EfeitoSonoro : MonoBehaviour
         if (Input.GetButton("Jump") && !somImpulso.isPlaying && controladorImpulso.Quantidade > 0)
             ExecutarAudioImpulso();
 
-        if (gameOver.EhGameOver || pause.EstaPausado())
+        if (gameOver.EhGameOver || pause.EstaPausado)
             PararTodosAudios();
     }
 
