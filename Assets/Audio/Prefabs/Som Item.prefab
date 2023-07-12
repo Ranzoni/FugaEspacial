@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2797730302719541855}
   - component: {fileID: 8263227830014209847}
   m_Layer: 0
-  m_Name: Som Powerup
+  m_Name: Som Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

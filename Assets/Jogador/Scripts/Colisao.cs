@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class Colisao : MonoBehaviour
 {
-    [SerializeField] GameObject explosaoSFX;
-    [SerializeField] GameObject explosaoVFX;
-    [SerializeField] GameObject powerUpSFX;
-
     ControladorImpulso controladorImpulso;
     GameObject powerUpSFXInstanciado;
+    EfeitoSonoro efeitoSonoro;
+    EfeitoVisual efeitoVisual;
 
     void Start()
     {
         controladorImpulso = GetComponent<ControladorImpulso>();
+        efeitoSonoro = GetComponent<EfeitoSonoro>();
+        efeitoVisual = GetComponent<EfeitoVisual>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -25,17 +25,9 @@ public class Colisao : MonoBehaviour
 
     void ProcessarColisaoItem(GameObject objetoColidiu)
     {
-        PowerupFX();
         Destroy(objetoColidiu);
+        efeitoSonoro.ExecutarAudioItem();
         controladorImpulso.RecuperarImpulso();
-    }
-
-    void PowerupFX()
-    {
-        if (powerUpSFXInstanciado is null)
-            powerUpSFXInstanciado = Instantiate(powerUpSFX, transform.position, Quaternion.identity);
-        
-        powerUpSFXInstanciado.GetComponent<AudioSource>().Play();
     }
 
     void ProcessarColisaoObstaculo(GameObject objetoColidiu)
@@ -48,16 +40,16 @@ public class Colisao : MonoBehaviour
     void ProcessarDestruicao()
     {
         DestruicaoFX();
-        DestruirNave();
+        RemoverNave();
     }
 
     void DestruicaoFX()
     {
-        Instantiate(explosaoSFX, transform.position, Quaternion.identity);
-        Instantiate(explosaoVFX, transform.position, Quaternion.identity);   
+        efeitoSonoro.ExecutarAudioExplosao();
+        efeitoVisual.ApresentarExplosao();
     }
 
-    void DestruirNave()
+    void RemoverNave()
     {
         var listCapsuleCollider = GetComponents<CapsuleCollider>();
         foreach (var capsuleCollider in listCapsuleCollider)

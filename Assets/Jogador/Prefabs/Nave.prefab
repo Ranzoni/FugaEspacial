@@ -11,14 +11,14 @@ GameObject:
   - component: {fileID: 2004307663277852141}
   - component: {fileID: 5682931611075654213}
   - component: {fileID: 3308375252721908948}
-  - component: {fileID: 4641828534041515232}
   - component: {fileID: 5529309384776682130}
   - component: {fileID: 1501424101297321086}
+  - component: {fileID: 995115151024111710}
+  - component: {fileID: 8748045214162574501}
+  - component: {fileID: 4641828534041515232}
   - component: {fileID: 7155293057670484983}
   - component: {fileID: 8624735771146736985}
   - component: {fileID: 2953878335998366387}
-  - component: {fileID: 8748045214162574501}
-  - component: {fileID: 5690354619261422699}
   m_Layer: 0
   m_Name: Nave
   m_TagString: Untagged
@@ -69,6 +69,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf0625157c85084c9eb0cab909d7568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5529309384776682130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4800335472358073294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe2b271159fd9d340b968b37baff9f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1501424101297321086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4800335472358073294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07aba8fbe166a344687fc1d450d5f58d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MotorNaveSFX: {fileID: 532915052983855231, guid: 8d38d1b3f59031c46b50b1cd701ce58c, type: 3}
+  ImpulsoNaveSFX: {fileID: 532915052983855231, guid: 2783542dc15a7a448b6683241399a211, type: 3}
+  explosaoSFX: {fileID: 532915052983855231, guid: c2d27e0d71edaed4c9c2188c4a03fedc, type: 3}
+  itemSFX: {fileID: 0}
+  gameOver: {fileID: 0}
+  pause: {fileID: 0}
+--- !u!114 &995115151024111710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4800335472358073294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89900df81b1738949becd81ffc4fbdac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fogoPadraoDireitoVFX: {fileID: 3421232432978519090}
+  fogoPadraoEsquerdoVFX: {fileID: 2302863751656052716}
+  fogoImpulsoDireitoVFX: {fileID: 2464439063563974702}
+  fogoImpulsoEsquerdoVFX: {fileID: 2767281295202298912}
+  explosaoVFX: {fileID: 100006, guid: e076683e0305e35498b8e8834978c0fa, type: 3}
+--- !u!114 &8748045214162574501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4800335472358073294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed631caa8408dad4c874ea74c4f33cf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impulso: 2
+  quantidade: 100
+  gastoComUso: 10
+  tempoDeGasto: 0.5
+  quantidadeParaRecuperar: 20
 --- !u!54 &4641828534041515232
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -85,35 +149,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5529309384776682130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4800335472358073294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe2b271159fd9d340b968b37baff9f26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosaoSFX: {fileID: 532915052983855231, guid: c2d27e0d71edaed4c9c2188c4a03fedc, type: 3}
-  explosaoVFX: {fileID: 100006, guid: e076683e0305e35498b8e8834978c0fa, type: 3}
-  powerUpSFX: {fileID: 0}
---- !u!114 &1501424101297321086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4800335472358073294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07aba8fbe166a344687fc1d450d5f58d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MotorNaveSFX: {fileID: 532915052983855231, guid: 8d38d1b3f59031c46b50b1cd701ce58c, type: 3}
-  ImpulsoNaveSFX: {fileID: 532915052983855231, guid: 2783542dc15a7a448b6683241399a211, type: 3}
 --- !u!136 &7155293057670484983
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -155,39 +190,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0.08, z: 0}
---- !u!114 &8748045214162574501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4800335472358073294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed631caa8408dad4c874ea74c4f33cf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  impulso: 2
-  quantidade: 100
-  gastoComUso: 10
-  tempoDeGasto: 0.5
-  quantidadeParaRecuperar: 20
---- !u!114 &5690354619261422699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4800335472358073294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f588c4a03f60321499a634c2233dee7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fogoPadraoDireitoVFX: {fileID: 3421232432978519090}
-  fogoPadraoEsquerdoVFX: {fileID: 2302863751656052716}
-  fogoImpulsoDireitoVFX: {fileID: 2464439063563974702}
-  fogoImpulsoEsquerdoVFX: {fileID: 2767281295202298912}
 --- !u!1001 &588811844100718834
 PrefabInstance:
   m_ObjectHideFlags: 0

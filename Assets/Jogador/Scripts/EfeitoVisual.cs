@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public class FogoFX : MonoBehaviour
+public class EfeitoVisual : MonoBehaviour
 {
     [SerializeField] GameObject fogoPadraoDireitoVFX;
     [SerializeField] GameObject fogoPadraoEsquerdoVFX;
     [SerializeField] GameObject fogoImpulsoDireitoVFX;
     [SerializeField] GameObject fogoImpulsoEsquerdoVFX;
+    [SerializeField] GameObject explosaoVFX;
 
     ControladorImpulso controladorImpulso;
 
@@ -18,19 +19,24 @@ public class FogoFX : MonoBehaviour
     {
         if (Input.GetButton("Jump") && controladorImpulso.Quantidade() > 0)
         {
-            ConfigurarFogo(false, fogoPadraoDireitoVFX, fogoPadraoEsquerdoVFX);
-            ConfigurarFogo(true, fogoImpulsoDireitoVFX, fogoImpulsoEsquerdoVFX);
+            ApresentarFogo(false, fogoPadraoDireitoVFX, fogoPadraoEsquerdoVFX);
+            ApresentarFogo(true, fogoImpulsoDireitoVFX, fogoImpulsoEsquerdoVFX);
         }
         else
         {
-            ConfigurarFogo(true, fogoPadraoDireitoVFX, fogoPadraoEsquerdoVFX);
-            ConfigurarFogo(false, fogoImpulsoDireitoVFX, fogoImpulsoEsquerdoVFX);
+            ApresentarFogo(true, fogoPadraoDireitoVFX, fogoPadraoEsquerdoVFX);
+            ApresentarFogo(false, fogoImpulsoDireitoVFX, fogoImpulsoEsquerdoVFX);
         }
     }
 
-    void ConfigurarFogo(bool habilitar, GameObject fogoDireito, GameObject fogoEsquerdo)
+    void ApresentarFogo(bool habilitar, GameObject fogoDireito, GameObject fogoEsquerdo)
     {
         fogoDireito.SetActive(habilitar);
         fogoEsquerdo.SetActive(habilitar);
+    }
+
+    public void ApresentarExplosao()
+    {
+        Instantiate(explosaoVFX, transform.position, Quaternion.identity);
     }
 }
