@@ -21,7 +21,7 @@ public class DificuldadeJogo : MonoBehaviour
         {
             yield return new WaitForSeconds(fatorDificuldade);
 
-            fatorDificuldade += .3f;
+            fatorDificuldade += acrescimoDificuldade;
         }
     }
 }

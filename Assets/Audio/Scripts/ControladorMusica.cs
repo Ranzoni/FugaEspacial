@@ -15,7 +15,7 @@ public class ControladorMusica : MonoBehaviour
 
     void Update()
     {
-        if (gameOver.EhGameOver())
+        if (gameOver.EhGameOver)
             musica.Stop();
 
         if (pause.EstaPausado())

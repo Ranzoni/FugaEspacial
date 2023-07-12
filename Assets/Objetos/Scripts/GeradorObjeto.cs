@@ -93,7 +93,7 @@ public class GeradorObjeto : MonoBehaviour
 
     void VerificarSePodeGerarItem()
     {
-        var pontuacaoAtual = pontuacao.Pontos();
+        var pontuacaoAtual = pontuacao.Pontos;
         if (pontuacaoAtual == 0 || podeGerarItem)
             return;
 

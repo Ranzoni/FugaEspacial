@@ -5,7 +5,13 @@ public class MovimentoObjeto : MonoBehaviour
     [Tooltip("Velocidade com que o objeto irá se movimentar (Ela será alterada conforme a dificuldade do jogo aumenta)")]
     [SerializeField] float velocidade = 3f;
     [Tooltip("Prefab com o script de Dificuldade do Jogo")]
-    [SerializeField] DificuldadeJogo dificuldadeJogo;
+    
+    DificuldadeJogo dificuldadeJogo;
+
+    void Start()
+    {
+        dificuldadeJogo = FindObjectOfType<DificuldadeJogo>();
+    }
 
     void Update()
     {

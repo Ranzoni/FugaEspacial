@@ -1,27 +1,29 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Canvas))]
 public class Pause : MonoBehaviour
 {
+    [Tooltip("Prefab com o script de Controle de Sessão")]
+    [SerializeField] ControladorSessao sessao;
+    [Tooltip("Prefab com o script de Game Over do jogo")]
+    [SerializeField] GameOver gameOver;
+    [Tooltip("Prefab com o script de Seleção do Botão Inicial")]
+    [SerializeField] SelecionarBotaoInicial selecionarBotaoInicial;
+
     Canvas pauseCanvas;
-    ControladorSessao sessao;
-    GameOver gameOver;
-    SelecionarBotaoInicial selecionarBotaoInicial;
 
     void Start()
     {
-        selecionarBotaoInicial = FindObjectOfType<SelecionarBotaoInicial>();
-        sessao = FindObjectOfType<ControladorSessao>();
-        gameOver = FindObjectOfType<GameOver>();
         pauseCanvas = GetComponent<Canvas>();
         pauseCanvas.enabled = false;
     }
 
     void Update()
     {
-        if (!Input.GetButtonDown("Cancel") || gameOver.EhGameOver())
+        if (!Input.GetButtonDown("Cancel") || gameOver.EhGameOver)
             return;
 
-        if (sessao.JogoEstaParado())
+        if (EstaPausado())
             Continuar();
         else
             Pausar();

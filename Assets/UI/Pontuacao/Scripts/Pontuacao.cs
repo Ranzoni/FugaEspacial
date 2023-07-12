@@ -1,8 +1,11 @@
 using UnityEngine;
 using TMPro;
 
+[RequireComponent(typeof(TextMeshProUGUI))]
 public class Pontuacao : MonoBehaviour
 {
+    public int Pontos { get { return pontos; } }
+
     int pontos;
     TextMeshProUGUI textoPontuacao;
 
@@ -17,10 +20,5 @@ public class Pontuacao : MonoBehaviour
         pontos += quantidade;
 
         textoPontuacao.text = pontos.ToString();
-    }
-
-    public int Pontos()
-    {
-        return pontos;
     }
 }

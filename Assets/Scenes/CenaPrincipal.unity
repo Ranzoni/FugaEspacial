@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.026626514, g: 0.07348754, b: 0.098705165, a: 1}
+  m_IndirectSpecularColor: {r: 0.017523842, g: 0.056035765, b: 0.07857395, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -250,6 +250,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Over Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8690235575884434963, guid: 191e7d0776ccc3e42a7b23b799cd1940, type: 3}
+      propertyPath: sessao
+      value: 
+      objectReference: {fileID: 867819855}
+    - target: {fileID: 8690235575884434963, guid: 191e7d0776ccc3e42a7b23b799cd1940, type: 3}
+      propertyPath: geradorObjeto
+      value: 
+      objectReference: {fileID: 990602377}
+    - target: {fileID: 8690235575884434963, guid: 191e7d0776ccc3e42a7b23b799cd1940, type: 3}
+      propertyPath: selecionarBotaoInicial
+      value: 
+      objectReference: {fileID: 191272867}
     - target: {fileID: 8920794876343028435, guid: 191e7d0776ccc3e42a7b23b799cd1940, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 4
@@ -1051,6 +1063,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 347217c5a0da6654eb3b2070d5a62add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fatorDificuldade: 1
+  acrescimoDificuldade: 0.3
 --- !u!4 &1586482871
 Transform:
   m_ObjectHideFlags: 0
@@ -1110,7 +1124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5719d88afddbe6f49a1e8d8745ec25a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pontuacaoPorSegundo: 10
+  tempoPontuacao: 1
+  quantidadePontos: 10
+  pontuacao: {fileID: 473694217}
 --- !u!114 &1606806332 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1259571267278142289, guid: 1021fbf0a744c064e819831de3ed2dab, type: 3}
@@ -1265,6 +1281,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6995546199637803518, guid: 1021fbf0a744c064e819831de3ed2dab, type: 3}
+      propertyPath: sessao
+      value: 
+      objectReference: {fileID: 867819855}
+    - target: {fileID: 6995546199637803518, guid: 1021fbf0a744c064e819831de3ed2dab, type: 3}
+      propertyPath: gameOver
+      value: 
+      objectReference: {fileID: 1029860725}
+    - target: {fileID: 6995546199637803518, guid: 1021fbf0a744c064e819831de3ed2dab, type: 3}
+      propertyPath: selecionarBotaoInicial
+      value: 
+      objectReference: {fileID: 191272867}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1021fbf0a744c064e819831de3ed2dab, type: 3}
 --- !u!224 &1778475974 stripped

@@ -1,20 +1,28 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Canvas), typeof(AudioSource))]
 public class GameOver : MonoBehaviour
 {
+    [Tooltip("Tempo de delay para apresentar o menu de Game Over")]
+    [SerializeField] float atrasoParaGameOver = 1f;
+    [Tooltip("Prefab com o script de Controle de Sessão")]
+    [SerializeField] ControladorSessao sessao;
+    [Tooltip("Prefab com o script de Seleção do Botão Inicial")]
+    [SerializeField] SelecionarBotaoInicial selecionarBotaoInicial;
+    [Tooltip("Prefab com o script de Geração de Objetos")]
+    [SerializeField] GeradorObjeto geradorObjeto;
+
+    public bool EhGameOver { get { return gameOverCanvas.enabled; } }
+
     Canvas gameOverCanvas;
-    ControladorSessao sessao;
     AudioSource somGameOver;
-    SelecionarBotaoInicial selecionarBotaoInicial;
 
     void Start()
     {
-        sessao = FindObjectOfType<ControladorSessao>();
         gameOverCanvas = GetComponent<Canvas>();
         gameOverCanvas.enabled = false;
         somGameOver = GetComponent<AudioSource>();
-        selecionarBotaoInicial = FindObjectOfType<SelecionarBotaoInicial>();
     }
 
     public void Apresentar()
@@ -24,23 +32,17 @@ public class GameOver : MonoBehaviour
 
     IEnumerator Executar()
     {
-        var geradorMeteoro = FindObjectOfType<GeradorObjeto>();
-        geradorMeteoro.Parar();
+        geradorObjeto.Parar();
 
         var meteoros = FindObjectsOfType<MovimentoObjeto>();
         foreach (var meteoro in meteoros)
             meteoro.Parar();
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(atrasoParaGameOver);
 
         selecionarBotaoInicial.AtivarBotaoGameOver();
         gameOverCanvas.enabled = true;
         sessao.PararJogo();
         somGameOver.Play();
-    }
-
-    public bool EhGameOver()
-    {
-        return gameOverCanvas.enabled;
     }
 }

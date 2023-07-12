@@ -3,13 +3,15 @@ using UnityEngine;
 
 public class SistemaPontuacao : MonoBehaviour
 {
-    [SerializeField] int pontuacaoPorSegundo = 10;
-
-    Pontuacao pontuacao;
+    [Tooltip("Tempo para pontuar (em segundos)")]
+    [SerializeField] float tempoPontuacao = 1f;
+    [Tooltip("Quantidade de pontos que serão conquistados")]
+    [SerializeField] int quantidadePontos = 10;
+    [Tooltip("Prefab com o script de Pontuação")]
+    [SerializeField] Pontuacao pontuacao;
 
     void Start()
     {
-        pontuacao = FindObjectOfType<Pontuacao>();
         StartCoroutine(ProcessoParaPontuacao());
     }
 
@@ -17,7 +19,7 @@ public class SistemaPontuacao : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(tempoPontuacao);
 
             FazerPontuacao();
         }
@@ -25,6 +27,6 @@ public class SistemaPontuacao : MonoBehaviour
 
     void FazerPontuacao()
     {
-        pontuacao.Aumentar(pontuacaoPorSegundo);
+        pontuacao.Aumentar(quantidadePontos);
     }
 }

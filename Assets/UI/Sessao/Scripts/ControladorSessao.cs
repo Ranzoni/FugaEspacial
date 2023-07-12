@@ -29,9 +29,4 @@ public class ControladorSessao : MonoBehaviour
     {
         Application.Quit();
     }
-
-    public bool JogoEstaParado()
-    {
-        return Time.timeScale == 0;
-    }
 }
