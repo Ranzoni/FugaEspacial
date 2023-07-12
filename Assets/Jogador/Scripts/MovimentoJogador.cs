@@ -2,9 +2,12 @@ using UnityEngine;
 
 public class MovimentoJogador : MonoBehaviour
 {
-    [SerializeField] float velocidadeMovimento = 2f;
-    [SerializeField] float velocidadeRotacao = 80f;
-    [SerializeField] float valorMaximoInclinacao = 0.5f;
+    [Tooltip("Velocidade com que a nave irá se movimentar")]
+    [SerializeField] float velocidade = 2f;
+    [Tooltip("Velocidade com que a nave irá se inclinar ao se movimentar na vertical")]
+    [SerializeField] float velocidadeInclinacao = 80f;
+    [Tooltip("A inclinação máxima que a nave atingirá ao se movimentar na vertical")]
+    [SerializeField] float inclinacaoMaxima = 0.5f;
 
     ControladorImpulso controladorImpulso;
 
@@ -21,7 +24,7 @@ public class MovimentoJogador : MonoBehaviour
     
     float FatorMovimentacao()
     {
-        var velocidadeTotal = controladorImpulso.Impulso() + velocidadeMovimento;
+        var velocidadeTotal = controladorImpulso.Impulso + velocidade;
 
         return velocidadeTotal * Time.deltaTime;
     }
@@ -38,7 +41,7 @@ public class MovimentoJogador : MonoBehaviour
 
     float FatorRotacao()
     {
-        return velocidadeRotacao * Time.deltaTime;
+        return velocidadeInclinacao * Time.deltaTime;
     }
 
     void Rotacionar()
@@ -67,7 +70,7 @@ public class MovimentoJogador : MonoBehaviour
         var rotacaoAtual = transform.rotation.z;
         rotacaoAtual = rotacaoAtual >= 0 ? rotacaoAtual : -rotacaoAtual;
 
-        return rotacaoAtual >= valorMaximoInclinacao;
+        return rotacaoAtual >= inclinacaoMaxima;
     }
 
     void VoltarInclinacao()

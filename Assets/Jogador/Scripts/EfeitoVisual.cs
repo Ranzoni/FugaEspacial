@@ -2,10 +2,17 @@ using UnityEngine;
 
 public class EfeitoVisual : MonoBehaviour
 {
+    [Header("Fogo de Turbina")]
+    [Tooltip("Prefab com o sistema de partícula padrão da turbina direita nave")]
     [SerializeField] GameObject fogoPadraoDireitoVFX;
+    [Tooltip("Prefab com o sistema de partícula padrão da turbina esquerda nave")]
     [SerializeField] GameObject fogoPadraoEsquerdoVFX;
+    [Tooltip("Prefab com o sistema de partícula do impulso da turbina direita nave")]
     [SerializeField] GameObject fogoImpulsoDireitoVFX;
+    [Tooltip("Prefab com o sistema de partícula do impulso da turbina esquerda nave")]
     [SerializeField] GameObject fogoImpulsoEsquerdoVFX;
+    [Header("Explosão")]
+    [Tooltip("Prefab com o sistema de partícula de explosão da nave")]
     [SerializeField] GameObject explosaoVFX;
 
     ControladorImpulso controladorImpulso;
@@ -17,7 +24,7 @@ public class EfeitoVisual : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton("Jump") && controladorImpulso.Quantidade() > 0)
+        if (Input.GetButton("Jump") && controladorImpulso.Quantidade > 0)
         {
             ApresentarFogo(false, fogoPadraoDireitoVFX, fogoPadraoEsquerdoVFX);
             ApresentarFogo(true, fogoImpulsoDireitoVFX, fogoImpulsoEsquerdoVFX);

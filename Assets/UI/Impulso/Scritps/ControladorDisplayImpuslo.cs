@@ -14,6 +14,6 @@ public class ControladorDisplayImpuslo : MonoBehaviour
 
     void Update()
     {
-        slider.value = controladorImpulso.Quantidade() / controladorImpulso.QuantidadeMaxima();
+        slider.value = controladorImpulso.Quantidade / controladorImpulso.QuantidadeMaxima;
     }
 }

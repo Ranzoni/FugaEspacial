@@ -3,13 +3,31 @@ using UnityEngine;
 
 public class ControladorImpulso : MonoBehaviour
 {
+    [Tooltip("Força do impulso")]
     [SerializeField] float impulso = 2f;
+    [Tooltip("Capacidade de uso do impulso (também será o valor inicial)")]
     [SerializeField] float quantidade = 100f;
+    [Tooltip("Quantidade de impulso que será gasto conforme o uso")]
     [SerializeField] float gastoComUso = 10f;
+    [Tooltip("O tempo de delay para debitar a quantidade de impulso conforme o uso")]
     [SerializeField] float tempoDeGasto = .5f;
-    [SerializeField] float quantidadeParaRecuperar = 20f;
+    [Tooltip("Quantidade de impulso que será recuperado")]
+    [SerializeField] float recuperacao = 20f;
 
-    bool emUso;
+    public float Impulso
+    {
+        get
+        {
+            if (!Input.GetButton("Jump") || quantidade <= 0)
+                return 0;
+
+            return impulso;
+        }
+    }
+    public float Quantidade { get { return quantidade; } }
+    public float QuantidadeMaxima { get { return quantidadeMaxima; } }
+
+    bool impulsoEmUso;
     float quantidadeMaxima;
 
     void Start()
@@ -20,18 +38,18 @@ public class ControladorImpulso : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonUp("Jump"))
-            emUso = false;
+            impulsoEmUso = false;
 
-        if (!Input.GetButton("Jump") || emUso)
+        if (!Input.GetButton("Jump") || impulsoEmUso)
             return;
 
-        emUso = true;
+        impulsoEmUso = true;
         StartCoroutine(ReduzirQuantidade());
     }
 
     public void RecuperarImpulso()
     {
-        quantidade += quantidadeParaRecuperar;
+        quantidade += recuperacao;
 
         if (quantidade > quantidadeMaxima)
             quantidade = quantidadeMaxima;
@@ -39,29 +57,11 @@ public class ControladorImpulso : MonoBehaviour
 
     IEnumerator ReduzirQuantidade()
     {
-        while (emUso && quantidade > 0)
+        while (impulsoEmUso && quantidade > 0)
         {
             yield return new WaitForSeconds(tempoDeGasto);
         
             quantidade -= gastoComUso;
         }
-    }
-
-    public float Impulso()
-    {
-        if (!Input.GetButton("Jump") || quantidade <= 0)
-            return 0;
-
-        return impulso;
-    }
-
-    public float Quantidade()
-    {
-        return quantidade;
-    }
-
-    public float QuantidadeMaxima()
-    {
-        return quantidadeMaxima;
     }
 }
