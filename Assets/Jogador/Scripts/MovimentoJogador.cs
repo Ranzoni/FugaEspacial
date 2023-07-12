@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(ControladorImpulso))]
 public class MovimentoJogador : MonoBehaviour
 {
     [Tooltip("Velocidade com que a nave irá se movimentar")]

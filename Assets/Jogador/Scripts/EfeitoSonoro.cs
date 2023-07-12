@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(ControladorImpulso))]
 public class EfeitoSonoro : MonoBehaviour
 {
     [Header("SFX")]

@@ -1,9 +1,9 @@
 using UnityEngine;
 
+[RequireComponent(typeof(ControladorImpulso), typeof(EfeitoSonoro), typeof(EfeitoVisual))]
 public class Colisao : MonoBehaviour
 {
     ControladorImpulso controladorImpulso;
-    GameObject powerUpSFXInstanciado;
     EfeitoSonoro efeitoSonoro;
     EfeitoVisual efeitoVisual;
 

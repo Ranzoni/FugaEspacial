@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(ControladorImpulso))]
 public class EfeitoVisual : MonoBehaviour
 {
     [Header("Fogo de Turbina")]
