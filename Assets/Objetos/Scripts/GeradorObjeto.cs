@@ -3,30 +3,36 @@ using UnityEngine;
 
 public class GeradorObjeto : MonoBehaviour
 {
+    [Header("Objetos")]
+    [Tooltip("Prefabs dos objetos que serão gerados")]
     [SerializeField] GameObject[] listaPrefab;
+    [Header("Tempo")]
+    [Tooltip("Tempo mínimo inicial para gerar os objetos (Ele será reduzido conforme a dificuldade do jogo aumenta)")]
     [SerializeField] float tempoMinimoGeracao = .5f;
+    [Tooltip("Tempo máximo inicial para gerar os objetos (Ele será reduzido conforme a dificuldade do jogo aumenta)")]
     [SerializeField] float tempoMaximoGeracao = 1.5f;
+    [Tooltip("Tempo mínimo limite para gerar os objetos (O limite mínimo do Tempo Máximo de Geração será definido na soma deste campo com o campo de Tempo Mínimo de Geração)")]
     [SerializeField] float menorTempoPossivel = .001f;
+    [Header("Altura")]
+    [Tooltip("Altura mínima para gerar os objetos")]
     [SerializeField] float alturaMinima = -5f;
+    [Tooltip("Altura máxima para gerar os objetos")]
     [SerializeField] float alturaMaxima = 5f;
-    [SerializeField] int intervaloPontuacao = 400;
+    [Header("Item")]
+    [Tooltip("Os itens serão gerados neste intervalo de pontos, então caso ele tenha o valor 400 os itens só irão aparecer a cada 400 pontos conquistados. Exemplo: a partir dos 400, depois a partir dos 800, 1200, 1600, ...")]
+    [SerializeField] int intervaloPontos = 400;
+    [Header("UI")]
+    [Tooltip("Prefab com o script de Dificuldade do Jogo")]
+    [SerializeField] DificuldadeJogo dificuldadeJogo;
+    [Tooltip("Prefab com o script de Pontuação")]
+    [SerializeField] Pontuacao pontuacao;
 
     bool fabricar = true;
-    DificuldadeJogo dificuldadeJogo;
-    Pontuacao pontuacao;
     bool podeGerarItem;
 
     void Start()
     {
-        dificuldadeJogo = FindObjectOfType<DificuldadeJogo>();
-        pontuacao = FindObjectOfType<Pontuacao>();
-
         StartCoroutine(Gerar());
-    }
-
-    void Update()
-    {
-        VerificarSePodeGerarItem();
     }
 
     IEnumerator Gerar()
@@ -36,7 +42,7 @@ public class GeradorObjeto : MonoBehaviour
             if (!fabricar)
                 break;
 
-            var tempoEspera = TempoEspera();
+            var tempoParaGeracao = TempoBalanceadoParaGeracao();
             var yValor = Random.Range(alturaMinima, alturaMaxima);
             var novaPosicao = new Vector3(transform.position.x, yValor, transform.position.z);
 
@@ -45,11 +51,11 @@ public class GeradorObjeto : MonoBehaviour
 
             novoObjeto.transform.parent = transform;
             
-            yield return new WaitForSeconds(tempoEspera);
+            yield return new WaitForSeconds(tempoParaGeracao);
         }
     }
 
-    float TempoEspera()
+    float TempoBalanceadoParaGeracao()
     {
         var tempoMinimoBalanceado = tempoMinimoGeracao / dificuldadeJogo.FatorBalanceamento();
         if (tempoMinimoBalanceado <= 0)
@@ -59,8 +65,8 @@ public class GeradorObjeto : MonoBehaviour
         if (tempoMaximoBalanceado <= tempoMinimoBalanceado)
             return tempoMinimoGeracao + menorTempoPossivel;
 
-        var tempoEspera = Random.Range(tempoMinimoBalanceado, tempoMaximoGeracao);
-        return tempoEspera;
+        var tempoGeracao = Random.Range(tempoMinimoBalanceado, tempoMaximoGeracao);
+        return tempoGeracao;
     }
 
     GameObject RetornarPrefabAleatorio()
@@ -80,13 +86,24 @@ public class GeradorObjeto : MonoBehaviour
         };
     }
 
+    void Update()
+    {
+        VerificarSePodeGerarItem();
+    }
+
     void VerificarSePodeGerarItem()
     {
         var pontuacaoAtual = pontuacao.Pontos();
         if (pontuacaoAtual == 0 || podeGerarItem)
             return;
 
-        podeGerarItem = pontuacaoAtual % intervaloPontuacao == 0;
+        if (EstaNoIntervaloParaGerarItem(pontuacaoAtual))
+            podeGerarItem = true;
+    }
+
+    bool EstaNoIntervaloParaGerarItem(int pontuacao)
+    {
+        return pontuacao % intervaloPontos == 0;
     }
 
     public void Parar()
